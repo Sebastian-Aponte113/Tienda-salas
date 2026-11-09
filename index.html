@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LÚMICA | Muebles & Concepto - Escaparate y Tienda de Salas</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            50: '#F2F5F3',
+                            100: '#E1E8E4',
+                            200: '#C4D3C9',
+                            700: '#2A4436',
+                            800: '#1F3328',
+                            900: '#14221B',
+                        },
+                        sand: {
+                            50: '#FAF8F5',
+                            100: '#F3EFEA',
+                            200: '#E7DFD5',
+                            300: '#D8CAB9',
+                        },
+                        amber: {
+                            500: '#C88D48',
+                            600: '#A96E30',
+                        },
+                        terracotta: {
+                            500: '#C85A32',
+                            600: '#A84320',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF8F5;
+            color: #14221B;
+        }
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .custom-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #F3EFEA;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #2A4436;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-forest-800 selection:text-sand-50 pb-20 md:pb-0">
+
+    <!-- Top Bar Anuncios -->
+    <div class="bg-forest-900 text-sand-100 text-[11px] py-2 px-4 text-center tracking-wider uppercase">
+        <span class="font-medium">✨ Showroom en Bogotá | Envío gratis por compras superiores a $3.000.000 | Garantía de 5 Años</span>
+    </div>
+
+    <!-- Navegación Principal -->
+    <header class="sticky top-0 z-40 bg-sand-50/95 backdrop-blur-md border-b border-sand-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <span class="text-2xl font-serif font-bold tracking-widest text-forest-900 uppercase">LÚMICA<span class="text-amber-500">.</span></span>
+            </a>
+
+            <!-- Menu de Navegación Híbrido Escaparate + Tienda -->
+            <nav class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-wider text-forest-800">
+                <a href="#escaparate" class="hover:text-amber-600 transition-colors">Escaparate</a>
+                <a href="#destacados" class="hover:text-amber-600 transition-colors">Colección Top</a>
+                <a href="#tienda" class="hover:text-amber-600 transition-colors flex items-center gap-1.5 text-amber-600">
+                    <span>Tienda Interactiva</span>
+                    <span class="bg-amber-500/20 text-amber-600 text-[9px] px-1.5 py-0.5 rounded font-bold">Catálogo</span>
+                </a>
+                <a href="#ubicacion" class="hover:text-amber-600 transition-colors">Showroom</a>
+            </nav>
+
+            <!-- Acciones Header -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <a href="https://wa.me/573105825228?text=Hola,%20deseo%20asesor%C3%ADa%20personalizada%20de%20dise%C3%B1o" 
+                   target="_blank" 
+                   class="hidden sm:inline-flex border border-forest-800 text-forest-900 hover:bg-forest-900 hover:text-white px-3.5 py-2 transition-colors text-xs font-medium uppercase tracking-wider items-center gap-1.5">
+                    <i class="fab fa-whatsapp text-sm text-emerald-600"></i>
+                    <span>Asesoría</span>
+                </a>
+
+                <!-- Botón Carrito con Contador -->
+                <button onclick="toggleCartDrawer()" class="relative bg-forest-800 text-sand-50 hover:bg-forest-900 px-4 py-2.5 flex items-center gap-3 transition-colors text-xs font-medium uppercase tracking-wider">
+                    <i class="fas fa-shopping-bag text-sm text-amber-500"></i>
+                    <span class="hidden sm:inline">Mi Pedido</span>
+                    <span id="cartBadgeCount" class="bg-amber-500 text-forest-900 font-bold px-1.5 py-0.5 text-[10px] min-w-[18px] text-center">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECCIÓN 1: ESCAPARATE HERO -->
+    <section id="escaparate" class="relative bg-forest-900 text-sand-50 overflow-hidden py-16 lg:py-24">
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#C88D48_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-6 space-y-6">
+                <span class="text-xs uppercase tracking-widest font-semibold text-amber-500 bg-forest-800/80 px-3 py-1.5 inline-block border border-amber-500/20">
+                    Showroom Escaparate 2026
+                </span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif leading-tight font-normal text-sand-50">
+                    Salas diseñadas para <span class="italic text-amber-500">enamorar a primera vista.</span>
+                </h1>
+                <p class="text-sm sm:text-base text-sand-200 font-light max-w-lg leading-relaxed">
+                    Combina la elegancia de nuestro escaparate exclusivo con la practicidad de comprar directamente en nuestra tienda virtual. Telas inteligentes, geometría de autor y confort superior.
+                </p>
+                <div class="pt-4 flex flex-wrap gap-4">
+                    <a href="#tienda" class="bg-amber-500 hover:bg-amber-600 text-forest-900 font-bold px-8 py-4 text-xs uppercase tracking-widest transition-colors shadow-lg">
+                        Ir a la Tienda Completa
+                    </a>
+                    <a href="https://wa.me/573105825228?text=Hola,%20quiero%20cotizar%20un%20dise%C3%B1o%20personalizado%20para%20mi%20sala" 
+                       target="_blank" 
+                       class="border border-sand-200/30 text-sand-100 hover:border-amber-500 hover:text-amber-500 px-8 py-4 text-xs uppercase tracking-widest font-semibold transition-colors flex items-center gap-2">
+                        <i class="fab fa-whatsapp text-sm"></i>
+                        Cotizar a Medida
+                    </a>
+                </div>
+            </div>
+
+            <!-- Imagen Destacada Hero Escaparate -->
+            <div class="lg:col-span-6">
+                <div class="relative border border-sand-200/20 shadow-2xl overflow-hidden bg-forest-800 aspect-[4/3]">
+                    <img src="images/hero-sala-lumica.jpg" 
+                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80';" 
+                         alt="Sala Premium LÚMICA" 
+                         class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beneficios Escaparate -->
+    <section class="bg-sand-100 border-b border-sand-200 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-4 border-r-0 md:border-r border-sand-300">
+                    <i class="fa-solid fa-gem text-2xl text-amber-600 mb-3"></i>
+                    <h4 class="font-serif font-bold text-lg text-forest-900">Diseños Exclusivos</h4>
+                    <p class="text-xs text-forest-900/70 mt-1">Acabados de autor elaborados con maderas de roble e inmunizadas.</p>
+                </div>
+                <div class="p-4 border-r-0 md:border-r border-sand-300">
+                    <i class="fa-solid fa-couch text-2xl text-amber-600 mb-3"></i>
+                    <h4 class="font-serif font-bold text-lg text-forest-900">Confort Certificado</h4>
+                    <p class="text-xs text-forest-900/70 mt-1">Espumas de densidad 30 penta de alta resiliencia y confort indeformable.</p>
+                </div>
+                <div class="p-4">
+                    <i class="fa-solid fa-[#C88D48] fa-store text-2xl text-amber-600 mb-3"></i>
+                    <h4 class="font-serif font-bold text-lg text-forest-900">Showroom Presencial</h4>
+                    <p class="text-xs text-forest-900/70 mt-1">Visítanos en la Calle 75 (Zona M, Bogotá) y prueba tu sala antes de comprar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2: ESCAPARATE DE PIEZAS DESTACADAS (LANDING PROMO) -->
+    <section id="destacados" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-sand-300">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+            <span class="text-xs uppercase tracking-widest font-semibold text-amber-600 block mb-2">Selección del Diseñador</span>
+            <h2 class="text-3xl sm:text-4xl font-serif text-forest-900 font-normal">Escaparate de Piezas Icono</h2>
+            <div class="w-16 h-0.5 bg-amber-500 mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Destacado 1 -->
+            <div class="bg-sand-50 border border-sand-300 p-6 flex flex-col justify-between group hover:border-forest-800 transition-all">
+                <div>
+                    <div class="aspect-[4/3] bg-sand-200 overflow-hidden mb-6 relative">
+                        <img src="images/sala-nordic.jpg" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=800&q=80';" 
+                             alt="Sala Nordic" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-amber-500 text-forest-900 text-[10px] font-bold uppercase tracking-wider px-3 py-1">Estrella del Escaparate</span>
+                    </div>
+                    <h3 class="font-serif text-xl text-forest-900 font-bold mb-2">Sala Modular Nordic Bouclé</h3>
+                    <p class="text-xs text-forest-900/70 mb-4 leading-relaxed">Geometría envolvente en lino bouclé marfil. Perfecta para espacios amplios que buscan luminosidad.</p>
+                </div>
+                <div class="pt-4 border-t border-sand-200 flex items-center justify-between">
+                    <span class="font-serif font-bold text-lg text-amber-600">$ 3.850.000 COP</span>
+                    <button onclick="scrollToTienda('lum-01')" class="text-xs uppercase font-bold tracking-wider text-forest-900 hover:text-amber-600">Ver en Tienda &rarr;</button>
+                </div>
+            </div>
+
+            <!-- Destacado 2 -->
+            <div class="bg-sand-50 border border-sand-300 p-6 flex flex-col justify-between group hover:border-forest-800 transition-all">
+                <div>
+                    <div class="aspect-[4/3] bg-sand-200 overflow-hidden mb-6 relative">
+                        <img src="images/poltrona-velvet.jpg" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80';" 
+                             alt="Poltrona Velvet Forest" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-forest-800 text-sand-50 text-[10px] font-bold uppercase tracking-wider px-3 py-1">Pieza de Acento</span>
+                    </div>
+                    <h3 class="font-serif text-xl text-forest-900 font-bold mb-2">Poltrona Velvet Forest</h3>
+                    <p class="text-xs text-forest-900/70 mb-4 leading-relaxed">Estructura anatómica tapizada en terciopelo esmeralda oliva suave con base giratoria invisble.</p>
+                </div>
+                <div class="pt-4 border-t border-sand-200 flex items-center justify-between">
+                    <span class="font-serif font-bold text-lg text-amber-600">$ 1.180.000 COP</span>
+                    <button onclick="scrollToTienda('lum-06')" class="text-xs uppercase font-bold tracking-wider text-forest-900 hover:text-amber-600">Ver en Tienda &rarr;</button>
+                </div>
+            </div>
+
+            <!-- Destacado 3 -->
+            <div class="bg-sand-50 border border-sand-300 p-6 flex flex-col justify-between group hover:border-forest-800 transition-all">
+                <div>
+                    <div class="aspect-[4/3] bg-sand-200 overflow-hidden mb-6 relative">
+                        <img src="images/sofa-linz.jpg" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80';" 
+                             alt="Sofá Linz Oliva" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-terracotta-500 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1">Popular</span>
+                    </div>
+                    <h3 class="font-serif text-xl text-forest-900 font-bold mb-2">Sofá Linz 3 Puestos Oliva</h3>
+                    <p class="text-xs text-forest-900/70 mb-4 leading-relaxed">Corte sobrio con apoyabrazos extendidos y tela inteligente repelente al agua y manchas.</p>
+                </div>
+                <div class="pt-4 border-t border-sand-200 flex items-center justify-between">
+                    <span class="font-serif font-bold text-lg text-amber-600">$ 2.950.000 COP</span>
+                    <button onclick="scrollToTienda('lum-02')" class="text-xs uppercase font-bold tracking-wider text-forest-900 hover:text-amber-600">Ver en Tienda &rarr;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: TIENDA INTERACTIVA COMPLETA CON BUSCADOR Y CATEGORÍAS -->
+    <section id="tienda" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Header de Catálogo Tienda -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-sand-300 gap-6">
+            <div>
+                <span class="text-xs uppercase tracking-widest font-semibold text-amber-600 block mb-1">Experiencia de Tienda Virtual</span>
+                <h2 class="text-3xl sm:text-4xl font-serif text-forest-900">Catálogo Completo LÚMICA</h2>
+            </div>
+
+            <!-- Buscador Integrado -->
+            <div class="relative w-full md:w-80">
+                <input type="text" 
+                       id="searchInput" 
+                       placeholder="Buscar por nombre, tela o tipo..." 
+                       class="w-full bg-sand-100 border border-sand-300 rounded-none px-4 py-3 pl-10 text-xs text-forest-900 focus:outline-none focus:border-forest-700 placeholder-forest-900/40">
+                <i class="fas fa-search absolute left-3.5 top-3.5 text-xs text-forest-900/50"></i>
+            </div>
+        </div>
+
+        <!-- Chips de Categorías -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar" id="categoryChips">
+            <button onclick="filterCategory('todas')" class="category-btn active bg-forest-800 text-sand-50 px-5 py-2.5 text-xs uppercase font-semibold tracking-wider whitespace-nowrap transition-colors border border-forest-800">
+                Todas las Salas
+            </button>
+            <button onclick="filterCategory('modulares')" class="category-btn bg-sand-100 text-forest-900 hover:bg-sand-200 px-5 py-2.5 text-xs uppercase font-semibold tracking-wider whitespace-nowrap transition-colors border border-sand-300">
+                Modulares en L
+            </button>
+            <button onclick="filterCategory('sofas')" class="category-btn bg-sand-100 text-forest-900 hover:bg-sand-200 px-5 py-2.5 text-xs uppercase font-semibold tracking-wider whitespace-nowrap transition-colors border border-sand-300">
+                Sofás 3 Puestos
+            </button>
+            <button onclick="filterCategory('poltronas')" class="category-btn bg-sand-100 text-forest-900 hover:bg-sand-200 px-5 py-2.5 text-xs uppercase font-semibold tracking-wider whitespace-nowrap transition-colors border border-sand-300">
+                Poltronas & Individuales
+            </button>
+            <button onclick="filterCategory('mesas')" class="category-btn bg-sand-100 text-forest-900 hover:bg-sand-200 px-5 py-2.5 text-xs uppercase font-semibold tracking-wider whitespace-nowrap transition-colors border border-sand-300">
+                Mesas de Centro
+            </button>
+        </div>
+
+        <!-- Grid de Productos -->
+        <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Renderizado dinámico vía JavaScript -->
+        </div>
+
+        <!-- Mensaje No Resultados -->
+        <div id="noResultsMsg" class="hidden text-center py-16 bg-sand-100 border border-sand-200">
+            <i class="fas fa-search text-3xl text-forest-900/40 mb-3"></i>
+            <h3 class="font-serif text-lg font-bold text-forest-900">No encontramos productos</h3>
+            <p class="text-xs text-forest-900/60 mt-1">Intenta buscar con otro término o selecciona otra categoría.</p>
+        </div>
+
+    </section>
+
+    <!-- SECCIÓN 4: UBICACIÓN Y SHOWROOM -->
+    <section id="ubicacion" class="py-20 bg-forest-900 text-sand-50 border-t border-forest-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs uppercase tracking-widest font-semibold text-amber-500 block mb-2">Visita Nuestro Showroom</span>
+                <h2 class="text-3xl sm:text-4xl font-serif text-sand-50">Ubicación & Atención Personalizada</h2>
+                <div class="w-16 h-0.5 bg-amber-500 mx-auto mt-4"></div>
+                <p class="text-xs text-sand-200/80 mt-4 leading-relaxed">
+                    Estamos ubicados en la reconocida Zona M de muebles en Bogotá. Ven a sentir la suavidad de nuestros tapizados y consulta las opciones de personalización.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+                <!-- Información de Contacto y Horarios -->
+                <div class="lg:col-span-5 bg-forest-800 border border-forest-700 p-8 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-amber-500 text-forest-900 flex items-center justify-center flex-shrink-0 font-bold">
+                                <i class="fas fa-map-pin"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif font-bold text-base text-sand-50">Showroom Calle 75</h4>
+                                <p class="text-xs text-sand-200/80 mt-1 leading-relaxed">
+                                    Calle 75 # 51-18 (Zona M de Muebles)<br>
+                                    Barrios Unidos, Bogotá, Colombia
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-amber-500 text-forest-900 flex items-center justify-center flex-shrink-0 font-bold">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif font-bold text-base text-sand-50">Horarios de Atención</h4>
+                                <p class="text-xs text-sand-200/80 mt-1 leading-relaxed">
+                                    Lunes a Sábado: 9:00 AM – 7:00 PM<br>
+                                    Domingos y Festivos: 10:00 AM – 5:00 PM
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-amber-500 text-forest-900 flex items-center justify-center flex-shrink-0 font-bold">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif font-bold text-base text-sand-50">Línea Directa WhatsApp</h4>
+                                <p class="text-xs text-sand-200/80 mt-1 leading-relaxed">
+                                    +57 310 582 5228<br>
+                                    Atención inmediata y asesoría en diseño
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-forest-700 mt-6">
+                        <a href="https://wa.me/573105825228?text=Hola,%20quisiera%20agendar%20una%20visita%20al%20showroom%20de%20la%20Calle%2075" 
+                           target="_blank" 
+                           class="w-full bg-amber-500 hover:bg-amber-600 text-forest-900 text-xs uppercase tracking-widest font-bold py-3.5 px-4 flex items-center justify-center gap-2 transition-colors">
+                            <i class="fab fa-whatsapp text-lg"></i>
+                            Agendar Cita en Showroom
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Google Maps Embed -->
+                <div class="lg:col-span-7 border border-forest-700 overflow-hidden min-h-[360px]">
+                    <iframe 
+                        title="Mapa Showroom Calle 75 Bogotá"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.621256428784!2d-74.0759312!3d4.6614745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9a5e962bce15%3A0xa6b36be6eef6847b!2sCl.%2075%20%2351-06%2C%20Barrios%20Unidos%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1700000000000!5m2!1ses!2sco" 
+                        class="w-full h-full min-h-[380px] border-0 filter opacity-90 contrast-125" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Elegante -->
+    <footer class="bg-forest-900 text-sand-100 border-t border-forest-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-forest-800 text-xs">
+            
+            <div>
+                <span class="text-2xl font-serif font-bold tracking-widest uppercase text-sand-50 block mb-3">LÚMICA<span class="text-amber-500">.</span></span>
+                <p class="text-sand-200/70 leading-relaxed">
+                    Experiencia de compra integrada: Escaparate de exhibición y Tienda Virtual directa para tu hogar.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-sm font-bold text-sand-50 uppercase tracking-wider mb-4">Servicios & Respaldo</h4>
+                <ul class="space-y-2 text-sand-200/80">
+                    <li>• Madera 100% inmunizada</li>
+                    <li>• Muestrario de más de 100 telas</li>
+                    <li>• Diseños a medida para apartamentos</li>
+                    <li>• Entregas seguras en Bogotá y Colombia</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-sm font-bold text-sand-50 uppercase tracking-wider mb-4">Contacto Directo</h4>
+                <ul class="space-y-2 text-sand-200/80">
+                    <li><i class="fab fa-whatsapp text-amber-500 mr-2"></i>+57 310 582 5228</li>
+                    <li><i class="fas fa-location-dot text-amber-500 mr-2"></i>Calle 75 # 51-18, Bogotá</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-sm font-bold text-sand-50 uppercase tracking-wider mb-4">Redes</h4>
+                <div class="flex gap-3 text-sm mb-4">
+                    <a href="https://instagram.com" target="_blank" class="w-9 h-9 border border-forest-700 flex items-center justify-center hover:border-amber-500 hover:text-amber-500 transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" class="w-9 h-9 border border-forest-700 flex items-center justify-center hover:border-amber-500 hover:text-amber-500 transition-colors">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pie de página final con link promocional para venta del servicio de diseño web -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-sand-200/60">
+            <p>&copy; 2026 LÚMICA Muebles & Concepto. Todos los derechos reservados.</p>
+            
+            <a href="https://wa.me/573105825228?text=Hola,%20quiero%20solicitar%20el%20dise%C3%B1o%20de%20una%20p%C3%A1gina%20web%20como%20esta%20para%20mi%20negocio" 
+               target="_blank" 
+               class="hover:text-amber-400 font-semibold underline underline-offset-4 transition-colors inline-flex items-center gap-1.5 text-xs text-sand-100 bg-forest-800/80 px-3 py-1.5 border border-forest-700">
+                <span>🚀 Ten una página así para tu negocio aquí</span>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Drawer Carrito de Compras Lateral -->
+    <div id="cartOverlay" onclick="toggleCartDrawer()" class="fixed inset-0 bg-forest-900/60 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+    
+    <div id="cartDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-sand-50 z-50 transform translate-x-full transition-transform duration-300 flex flex-col shadow-2xl border-l border-sand-300">
+        <div class="p-5 bg-forest-900 text-sand-50 flex items-center justify-between border-b border-forest-800">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-shopping-bag text-amber-500"></i>
+                <h3 class="font-serif font-bold text-base tracking-wider uppercase">Tu Pedido LÚMICA</h3>
+            </div>
+            <button onclick="toggleCartDrawer()" class="text-sand-200 hover:text-white text-lg">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div id="cartItemsContainer" class="p-5 flex-1 overflow-y-auto custom-scroll space-y-4">
+            <!-- Items del carrito -->
+        </div>
+
+        <div class="p-5 bg-sand-100 border-t border-sand-300 space-y-4">
+            <div class="space-y-1.5 text-xs">
+                <div class="flex justify-between text-forest-900/70">
+                    <span>Subtotal</span>
+                    <span id="cartSubtotal">$ 0 COP</span>
+                </div>
+                <div class="flex justify-between text-forest-900/70">
+                    <span>Envío Showroom / Bogotá</span>
+                    <span class="text-emerald-700 font-semibold">A convenir</span>
+                </div>
+                <div class="flex justify-between text-sm font-bold text-forest-900 pt-2 border-t border-sand-300">
+                    <span>TOTAL ESTIMADO</span>
+                    <span id="cartTotal" class="text-amber-600 font-serif text-base">$ 0 COP</span>
+                </div>
+            </div>
+
+            <button onclick="sendOrderToWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-4 text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors">
+                <i class="fab fa-whatsapp text-lg"></i>
+                Enviar Pedido por WhatsApp
+            </button>
+            <p class="text-[10px] text-center text-forest-900/50">Recibirás confirmación de inventario y atención directa en tu WhatsApp.</p>
+        </div>
+    </div>
+
+    <!-- Botón Flotante WhatsApp -->
+    <a href="https://wa.me/573105825228?text=Hola,%20me%20gustar%C3%ADa%20recibir%20asesor%C3%ADa%20sobre%20sus%20salas" 
+       target="_blank" 
+       aria-label="Contactar por WhatsApp"
+       class="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-700 text-white w-14 h-14 shadow-2xl flex items-center justify-center rounded-full transition-transform hover:scale-110">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- LÓGICA JAVASCRIPT DEL PRODUCTO Y TIENDA INTERACTIVA -->
+    <script>
+        // Catálogo de Productos Completo con imágenes corregidas
+        const products = [
+            {
+                id: 'lum-01',
+                name: 'Sala Modular Nordic Bouclé',
+                category: 'modulares',
+                price: 3850000,
+                oldPrice: 4200000,
+                badge: '-15% Oferta',
+                badgeColor: 'bg-terracotta-500 text-white',
+                inStock: true,
+                image: 'images/sala-nordic.jpg',
+                fallback: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=800&q=80',
+                desc: 'Diseño modular de 3 piezas en tela bouclé marfil de alta durabilidad y confort.'
+            },
+            {
+                id: 'lum-02',
+                name: 'Sofá Linz 3 Puestos Oliva',
+                category: 'sofas',
+                price: 2950000,
+                oldPrice: null,
+                badge: 'Más Vendido',
+                badgeColor: 'bg-forest-800 text-amber-500 border border-amber-500/30',
+                inStock: true,
+                image: 'images/sofa-linz.jpg',
+                fallback: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80',
+                desc: 'Sofá de corte contemporáneo tapizado en microfibra oliva antipolvo.'
+            },
+            {
+                id: 'lum-03',
+                name: 'Poltrona Curva Siena Marfil',
+                category: 'poltronas',
+                price: 1350000,
+                oldPrice: null,
+                badge: 'Nuevo',
+                badgeColor: 'bg-amber-500 text-forest-900 font-bold',
+                inStock: true,
+                image: 'images/poltrona-siena.jpg',
+                fallback: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=80',
+                desc: 'Poltrona giratoria con arquitectura orgánica de máximo confort.'
+            },
+            {
+                id: 'lum-04',
+                name: 'Mesa de Centro Orgánica Roble',
+                category: 'mesas',
+                price: 890000,
+                oldPrice: 980000,
+                badge: 'Oferta',
+                badgeColor: 'bg-terracotta-500 text-white',
+                inStock: true,
+                image: 'images/mesa-roble.jpg',
+                fallback: 'https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?auto=format&fit=crop&w=800&q=80',
+                desc: 'Mesa de centro con bordes suaves en roble natural macizo.'
+            },
+            {
+                id: 'lum-05',
+                name: 'Sala L-Shape Oslo Terracota',
+                category: 'modulares',
+                price: 4100000,
+                oldPrice: null,
+                badge: 'Agotado',
+                badgeColor: 'bg-stone-500 text-white',
+                inStock: false,
+                image: 'images/sala-oslo.jpg',
+                fallback: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
+                desc: 'Sofá esquintero amplio en lino pesado tono terracota artesanal.'
+            },
+            {
+                id: 'lum-06',
+                name: 'Poltrona Velvet Forest',
+                category: 'poltronas',
+                price: 1180000,
+                oldPrice: 1300000,
+                badge: 'Escaparate Icon',
+                badgeColor: 'bg-forest-800 text-amber-500 border border-amber-500/30',
+                inStock: true,
+                image: 'images/poltrona-velvet.jpg',
+                fallback: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80',
+                desc: 'Poltrona individual tapizada en terciopelo esmeralda oliva suave.'
+            }
+        ];
+
+        let cart = [];
+        let activeCategory = 'todas';
+        let searchQuery = '';
+
+        function formatCOP(num) {
+            return '$ ' + num.toLocaleString('es-CO') + ' COP';
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            const noResults = document.getElementById('noResultsMsg');
+            
+            const filtered = products.filter(p => {
+                const matchesCategory = activeCategory === 'todas' || p.category === activeCategory;
+                const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                      p.desc.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            grid.innerHTML = filtered.map(p => `
+                <div id="product-card-${p.id}" class="bg-sand-50 border border-sand-300 flex flex-col justify-between group transition-all duration-300 hover:border-forest-700">
+                    <div>
+                        <div class="relative w-full aspect-[4/3] bg-sand-200 overflow-hidden">
+                            <img src="${p.image}" 
+                                 onerror="this.onerror=null; this.src='${p.fallback}';" 
+                                 alt="${p.name}" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${!p.inStock ? 'opacity-60 grayscale' : ''}">
+                            
+                            ${p.badge ? `
+                                <span class="absolute top-3 left-3 text-[10px] uppercase font-bold tracking-widest px-3 py-1 ${p.badgeColor}">
+                                    ${p.badge}
+                                </span>
+                            ` : ''}
+
+                            ${!p.inStock ? `
+                                <div class="absolute inset-0 bg-forest-900/40 flex items-center justify-center">
+                                    <span class="bg-forest-900 text-sand-50 text-xs uppercase font-bold tracking-widest px-4 py-2 border border-sand-300">
+                                        Agotado Temporaria
+                                    </span>
+                                </div>
+                            ` : ''}
+                        </div>
+
+                        <div class="p-5">
+                            <h3 class="font-serif text-lg font-bold text-forest-900 mb-1.5">${p.name}</h3>
+                            <p class="text-xs text-forest-900/60 leading-relaxed mb-4">${p.desc}</p>
+                        </div>
+                    </div>
+
+                    <div class="p-5 pt-0">
+                        <div class="flex items-baseline justify-between pt-3 border-t border-sand-200 mb-4">
+                            <div>
+                                <span class="text-[10px] uppercase text-forest-900/40 block">Precio</span>
+                                <span class="text-base font-bold font-serif text-forest-900">${formatCOP(p.price)}</span>
+                            </div>
+                            ${p.oldPrice ? `
+                                <span class="text-xs line-through text-forest-900/40">${formatCOP(p.oldPrice)}</span>
+                            ` : ''}
+                        </div>
+
+                        ${p.inStock ? `
+                            <button onclick="addToCart('${p.id}')" 
+                                    class="w-full bg-forest-800 hover:bg-forest-900 text-sand-50 text-xs font-semibold uppercase tracking-wider py-3 px-4 flex items-center justify-center gap-2 transition-colors">
+                                <i class="fas fa-cart-plus text-amber-500"></i>
+                                Añadir al Pedido
+                            </button>
+                        ` : `
+                            <button disabled 
+                                    class="w-full bg-sand-200 text-forest-900/40 text-xs font-semibold uppercase tracking-wider py-3 px-4 cursor-not-allowed">
+                                Agotado
+                            </button>
+                        `}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function scrollToTienda(productId) {
+            document.getElementById('tienda').scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => {
+                const el = document.getElementById(`product-card-${productId}`);
+                if (el) {
+                    el.classList.add('ring-2', 'ring-amber-500');
+                    setTimeout(() => el.classList.remove('ring-2', 'ring-amber-500'), 2000);
+                }
+            }, 500);
+        }
+
+        function addToCart(productId) {
+            const prod = products.find(p => p.id === productId);
+            if (!prod) return;
+
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...prod, quantity: 1 });
+            }
+
+            updateCartUI();
+            toggleCartDrawer(true);
+        }
+
+        function updateQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (!item) return;
+
+            item.quantity += delta;
+            if (item.quantity <= 0) {
+                cart = cart.filter(i => i.id !== productId);
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(i => i.id !== productId);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cartItemsContainer');
+            const badgeCount = document.getElementById('cartBadgeCount');
+            const subtotalEl = document.getElementById('cartSubtotal');
+            const totalEl = document.getElementById('cartTotal');
+
+            const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+            const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+
+            badgeCount.innerText = totalItems;
+            subtotalEl.innerText = formatCOP(totalPrice);
+            totalEl.innerText = formatCOP(totalPrice);
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-forest-900/50">
+                        <i class="fas fa-shopping-bag text-3xl mb-3 text-sand-300"></i>
+                        <p class="text-xs font-medium">Tu pedido está vacío.</p>
+                        <p class="text-[11px] mt-1 text-forest-900/40">Navega en el catálogo y añade los muebles que desees.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = cart.map(item => `
+                <div class="flex gap-3 bg-sand-100 p-3 border border-sand-300 items-center">
+                    <img src="${item.image}" onerror="this.onerror=null; this.src='${item.fallback}';" class="w-16 h-16 object-cover bg-sand-200">
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-serif text-xs font-bold text-forest-900 truncate">${item.name}</h4>
+                        <p class="text-xs font-serif text-amber-600 font-semibold mt-0.5">${formatCOP(item.price)}</p>
+                        
+                        <div class="flex items-center gap-2 mt-2">
+                            <button onclick="updateQuantity('${item.id}', -1)" class="w-5 h-5 bg-sand-200 text-forest-900 flex items-center justify-center font-bold text-xs">-</button>
+                            <span class="text-xs font-semibold px-1 text-forest-900">${item.quantity}</span>
+                            <button onclick="updateQuantity('${item.id}', 1)" class="w-5 h-5 bg-sand-200 text-forest-900 flex items-center justify-center font-bold text-xs">+</button>
+                        </div>
+                    </div>
+                    <button onclick="removeFromCart('${item.id}')" class="text-stone-400 hover:text-terracotta-500 text-sm px-2">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function toggleCartDrawer(forceOpen = false) {
+            const drawer = document.getElementById('cartDrawer');
+            const overlay = document.getElementById('cartOverlay');
+
+            if (forceOpen || drawer.classList.contains('translate-x-full')) {
+                drawer.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                drawer.classList.add('translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        function sendOrderToWhatsApp() {
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío. Agrega al menos un producto antes de realizar tu pedido.');
+                return;
+            }
+
+            let message = "Hola *LÚMICA Muebles & Concepto*, me gustaría realizar la siguiente orden:\n\n";
+            let grandTotal = 0;
+
+            cart.forEach((item, index) => {
+                const sub = item.price * item.quantity;
+                grandTotal += sub;
+                message += `${index + 1}. *${item.name}*\n   • Cantidad: ${item.quantity}\n   • Precio: ${formatCOP(item.price)}\n   • Subtotal: ${formatCOP(sub)}\n\n`;
+            });
+
+            message += `*TOTAL DEL PEDIDO:* ${formatCOP(grandTotal)}\n\n`;
+            message += "📍 *Showroom:* Calle 75 (Zona M, Bogotá)\n";
+            message += "Quedo atento a la confirmación de envío. ¡Gracias!";
+
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/573105825228?text=${encoded}`, '_blank');
+        }
+
+        function filterCategory(cat) {
+            activeCategory = cat;
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-forest-800', 'text-sand-50', 'border-forest-800');
+                btn.classList.add('bg-sand-100', 'text-forest-900', 'border-sand-300');
+            });
+
+            event.currentTarget.classList.remove('bg-sand-100', 'text-forest-900', 'border-sand-300');
+            event.currentTarget.classList.add('active', 'bg-forest-800', 'text-sand-50', 'border-forest-800');
+
+            renderProducts();
+        }
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            renderProducts();
+        });
+
+        window.onload = function() {
+            renderProducts();
+            updateCartUI();
+        };
+    </script>
+</body>
+</html>
